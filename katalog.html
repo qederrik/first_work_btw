@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Katalog – Jaroslavs Rökeri</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-brand">
+        <img src="img/logo.png" alt="Jaroslavs Rökeri Logo">
+        <!-- Клик по названию ведёт на главную -->
+        <a href="index.html" class="brand-title">Jaroslavs Rökeri</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="katalog.html" class="active-link">Katalog</a>
+        <a href="delivery.html">Leverans</a>
+        <a href="paying.html">Betalning</a>
+        <a href="contacts.html">Kontakt</a>
+      </div>
+
+      <div class="nav-right">
+        <a href="cart.html">Varukorg</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="catalog-page">
+    <!-- Заголовок каталога -->
+    <section class="catalog-header">
+      <h1>Katalog</h1>
+      <p>Upptäck våra torkade och rökta specialiteter – noggrant utvalda för dig som älskar äkta smak.</p>
+    </section>
+
+    <!-- Фильтры (пока просто визуально, без JS) -->
+    <section class="catalog-filters">
+      <button class="filter-chip filter-chip-active">Alla produkter</button>
+      <button class="filter-chip">Torrt kött</button>
+      <button class="filter-chip">Korv</button>
+      <button class="filter-chip">Vilt</button>
+      <button class="filter-chip">Presentpaket</button>
+    </section>
+
+    <!-- Сетка товаров -->
+    <section class="catalog-grid">
+      <!-- Карта 1 -->
+      <article class="catalog-card">
+        <img src="img/product1.jpg" alt="Fläskjerky" class="catalog-card-img">
+        <div class="catalog-card-body">
+          <h2>Fläskjerky</h2>
+          <p>Tunt skuret marinerat fläskkött – torkat och lätt rökt för krispig, intensiv smak.</p>
+          <div class="catalog-meta">
+            <span>100 g</span>
+            <span>89 kr</span>
+          </div>
+          <button class="catalog-btn">Mer info</button>
+        </div>
+      </article>
+
+      <!-- Карта 2 -->
+      <article class="catalog-card">
+        <img src="img/product2.jpg" alt="Biffjerky" class="catalog-card-img">
+        <div class="catalog-card-body">
+          <h2>Biffjerky</h2>
+          <p>Klassisk beefjerky av nötkött – perfekt som proteinrikt snacks efter träning.</p>
+          <div class="catalog-meta">
+            <span>100 g</span>
+            <span>99 kr</span>
+          </div>
+          <button class="catalog-btn">Mer info</button>
+        </div>
+      </article>
+
+      <!-- Карта 3 -->
+      <article class="catalog-card">
+        <img src="img/product3.jpg" alt="Krakowska korv" class="catalog-card-img">
+        <div class="catalog-card-body">
+          <h2>Krakowska korv</h2>
+          <p>Traditionell torkad korv av fläsk- och nötkött med vitlök och aromatiska kryddor.</p>
+          <div class="catalog-meta">
+            <span>ca 100 g</span>
+            <span>79 kr</span>
+          </div>
+          <button class="catalog-btn">Mer info</button>
+        </div>
+      </article>
+
+      <!-- Карта 4 -->
+      <article class="catalog-card">
+        <img src="img/product4.jpg" alt="Kallrökt älg" class="catalog-card-img">
+        <div class="catalog-card-body">
+          <h2>Kallrökt älg</h2>
+          <p>Långlagrat älgkött med tydlig men balanserad rökighet – perfekt till charkbricka.</p>
+          <div class="catalog-meta">
+            <span>ca 100 g</span>
+            <span>129 kr</span>
+          </div>
+          <button class="catalog-btn">Mer info</button>
+        </div>
+      </article>
+
+      <!-- Карта 5 -->
+      <article class="catalog-card">
+        <img src="img/product5.jpg" alt="Kallrökt kronhjort" class="catalog-card-img">
+        <div class="catalog-card-body">
+          <h2>Kallrökt kronhjort</h2>
+          <p>Elegant viltkött med mild rökighet – ett självklart val till finare servering.</p>
+          <div class="catalog-meta">
+            <span>ca 100 g</span>
+            <span>139 kr</span>
+          </div>
+          <button class="catalog-btn">Mer info</button>
+        </div>
+      </article>
+
+      <!-- Карта 6 -->
+      <article class="catalog-card">
+        <img src="img/product6.jpg" alt="Vildsvin kallrökt" class="catalog-card-img">
+        <div class="catalog-card-body">
+          <h2>Vildsvin kallrökt</h2>
+          <p>Kraftfull smak med tydlig rökton – för dig som gillar något extra intensivt.</p>
+          <div class="catalog-meta">
+            <span>ca 100 g</span>
+            <span>115 kr</span>
+          </div>
+          <button class="catalog-btn">Mer info</button>
+        </div>
+      </article>
+
+      <!-- Карта 7 -->
+      <article class="catalog-card">
+        <img src="img/product7.jpg" alt="Familjepaket" class="catalog-card-img">
+        <div class="catalog-card-body">
+          <h2>Familjepaket</h2>
+          <p>Blandning av flera favoriter – perfekt att dela med familj och vänner.</p>
+          <div class="catalog-meta">
+            <span>500 g</span>
+            <span>399 kr</span>
+          </div>
+          <button class="catalog-btn">Mer info</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

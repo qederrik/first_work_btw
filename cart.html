@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Varukorg – Jaroslavs Rökeri</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-brand">
+        <img src="img/logo.png" alt="Jaroslavs Rökeri Logo">
+        <a href="index.html" class="brand-title">Jaroslavs Rökeri</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="katalog.html">Katalog</a>
+        <a href="delivery.html">Leverans</a>
+        <a href="paying.html">Betalning</a>
+        <a href="contacts.html">Kontakt</a>
+      </div>
+
+      <div class="nav-right">
+        <a href="cart.html">Varukorg</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-wrapper">
+    <section class="page-header-block">
+      <h1>Varukorg</h1>
+      <p>Här ser du de produkter du har lagt till i din beställning.</p>
+    </section>
+
+    <section id="cart-container">
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Produkt</th>
+            <th>Vikt</th>
+            <th>Antal</th>
+            <th>Pris</th>
+            <th>Summa</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="cart-items"></tbody>
+      </table>
+
+      <div class="cart-summary">
+        <p><strong>Totalt:</strong> <span id="cart-total">0 kr</span></p>
+        <button id="cart-clear" class="contact-btn">Töm varukorg</button>
+      </div>
+    </section>
+
+    <section class="cart-empty" style="display:none">
+      <p>Din varukorg är tom just nu.</p>
+      <a href="katalog.html" class="hero-btn">Gå till katalogen →</a>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
