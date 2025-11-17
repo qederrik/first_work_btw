@@ -1,0 +1,687 @@
+/* ================== БАЗА ================== */
+
+:root {
+  --color-bg: #221713;
+  --color-primary: #ad4c29;
+  --color-secondary: #dfa496;
+  --color-header-bg: #1b120e;
+  --color-card-bg: #2b1b16;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-secondary);
+}
+
+/* ссылки по умолчанию не синие и без подчёркивания */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* убираем стремные обводки у кнопок/ссылок */
+a:focus,
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ================== HEADER ================== */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(27, 18, 14, 0.95);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+}
+
+/* контейнер навигации */
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 40px;
+  display: flex;
+  align-items: center;
+}
+
+/* слева: лого + название */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.nav-brand img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* кликабельное название как у тебя */
+.brand-title {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.brand-title:hover {
+  opacity: 0.8;
+}
+
+/* центр: ссылки */
+.nav-links {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+  color: var(--color-secondary);
+  position: relative;
+}
+
+/* подчёркивание при hover */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.2s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* справа: Varukorg */
+.nav-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-right a {
+  font-size: 0.95rem;
+  color: var(--color-secondary);
+}
+
+/* отступ контента вниз, чтобы не залезать под шапку на внутренних страницах */
+.page-wrapper,
+.catalog-page {
+  padding-top: 100px;
+}
+
+/* ================== HERO (ГЛАВНАЯ) ================== */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+/* фон из 3 фото */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+
+.hero-img {
+  flex: 0 0 33.3333%;
+  width: 33.3333%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.22;
+  filter: blur(0.8px);
+}
+
+/* затемнение поверх фото */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(14, 13, 13, 0.7),
+    rgba(14, 13, 13, 0.85)
+  );
+  z-index: 1;
+}
+
+/* контент hero */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 18px 28px;
+  border-radius: 12px;
+  background: rgba(14, 13, 13, 0.65);
+  max-width: 600px;
+}
+
+.hero-content h2 {
+  margin: 0 0 10px;
+  font-size: 2.6rem;
+  color: var(--color-secondary);
+}
+
+.hero-content p {
+  margin: 0 0 18px;
+  font-size: 1.05rem;
+}
+
+/* ================== ОБЩИЙ СТИЛЬ КНОПОК ================== */
+
+.hero-content a,
+.buy-btn,
+.catalog-btn,
+.contact-btn,
+.hero-btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  text-decoration: none;
+
+  transition: transform 0.15s ease,
+              box-shadow 0.15s ease,
+              opacity 0.15s ease;
+}
+
+.hero-content a,
+.hero-btn {
+  background: #1b120e;
+  color: #ad4c29;
+}
+
+.buy-btn,
+.catalog-btn,
+.contact-btn {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+.hero-content a:hover,
+.hero-btn:hover,
+.buy-btn:hover,
+.catalog-btn:hover,
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  opacity: 0.96;
+}
+
+/* ================== БОЛЬШОЙ СЛАЙДЕР ================== */
+
+.product-slider {
+  max-width: 1200px;
+  margin: 40px auto 40px;
+  position: relative;
+  padding: 0 50px;
+}
+
+.slider-viewport {
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--color-card-bg);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+/* один слайд */
+.product-slide {
+  min-width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+/* левая картинка */
+.slide-image {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* правая текстовая часть */
+.slide-content {
+  flex: 1;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.slide-content h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--color-primary);
+}
+
+.slide-content p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.slide-content .weight {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* кнопка Купить уже стилизована выше (buy-btn) */
+
+/* стрелки */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  z-index: 3;
+
+  transition: transform 0.15s ease,
+              background 0.15s ease,
+              box-shadow 0.15s ease;
+}
+
+.slider-btn.prev {
+  left: 10px;
+}
+
+.slider-btn.next {
+  right: 10px;
+}
+
+.slider-btn:hover {
+  transform: translateY(-50%) scale(1.05);
+  background: rgba(0, 0, 0, 0.85);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* ================== НИЖНИЕ БЛОКИ (Top Veckan / Dagen / Till Öl) ================== */
+
+.sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 40px 20px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-box {
+  background: var(--color-card-bg);
+  padding: 22px 24px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.section-box h3 {
+  color: var(--color-primary);
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+}
+
+/* ================== КАТАЛОГ (katalog.html) ================== */
+
+.catalog-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 40px 60px;
+}
+
+/* заголовок каталога */
+.catalog-header h1 {
+  margin: 0 0 10px;
+  font-size: 2rem;
+  color: var(--color-primary);
+}
+
+.catalog-header p {
+  margin: 0 0 25px;
+  font-size: 0.98rem;
+  max-width: 650px;
+}
+
+/* фильтры */
+.catalog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.filter-chip {
+  border: 1px solid rgba(223, 164, 150, 0.5);
+  background: transparent;
+  color: var(--color-secondary);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s ease,
+              color 0.15s ease,
+              border-color 0.15s ease;
+}
+
+.filter-chip:hover {
+  background: rgba(173, 76, 41, 0.2);
+  border-color: var(--color-primary);
+}
+
+.filter-chip-active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+/* сетка карточек */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+/* карточка товара */
+.catalog-card {
+  background: var(--color-card-bg);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog-card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.catalog-card-body {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.catalog-card-body h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+}
+
+.catalog-card-body p {
+  margin: 0;
+  font-size: 0.93rem;
+}
+
+/* вес и цена */
+.catalog-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-top: 6px;
+  opacity: 0.9;
+}
+
+/* кнопка внутри карточки — общие стили уже заданы (catalog-btn) */
+
+/* ================== ОБЩИЕ ВНУТРЕННИЕ СТРАНИЦЫ (delivery, paying, contacts, cart) ================== */
+
+.page-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 40px 60px;
+}
+
+/* верхний заголовок страницы */
+.page-header-block h1 {
+  margin: 0 0 10px;
+  font-size: 2rem;
+  color: var(--color-primary);
+}
+
+.page-header-block p {
+  margin: 0 0 25px;
+  font-size: 0.98rem;
+  max-width: 650px;
+}
+
+/* две колонки */
+.two-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+/* обычный блок */
+.page-section {
+  margin-bottom: 30px;
+}
+
+/* ================== КОНТАКТЫ (contacts.html) ================== */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form label {
+  font-size: 0.9rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: #1b120e;
+  color: var(--color-secondary);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+/* contact-btn стилизована через общий блок кнопок */
+
+/* ================== КОРЗИНА (cart.html) ================== */
+
+.cart-empty {
+  margin-top: 20px;
+}
+
+.cart-empty p {
+  margin-bottom: 14px;
+}
+
+/* ================== СКРОЛЛБАР ================== */
+
+body::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+body::-webkit-scrollbar-track {
+  background: #1a0f0c;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #4c2b22;
+  border-radius: 4px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #6a3a2c;
+}
+
+/* для Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #4c2b22 #1a0f0c;
+}
+
+/* ================== ПРОСТАЯ АДАПТИВНОСТЬ ================== */
+
+@media (max-width: 900px) {
+  nav {
+    padding: 10px 16px;
+  }
+
+  .nav-links {
+    gap: 24px;
+  }
+
+  .product-slider {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  nav {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .nav-brand {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .nav-links {
+    order: 3;
+    flex: 1 1 100%;
+    justify-content: center;
+    gap: 16px;
+    font-size: 0.9rem;
+  }
+
+  .nav-right {
+    order: 2;
+    justify-content: center;
+  }
+
+  .product-slide {
+    flex-direction: column;
+  }
+
+  .slide-image {
+    max-height: 220px;
+  }
+
+  .catalog-page,
+  .page-wrapper {
+    padding: 110px 16px 40px;
+  }
+}
+
+/* ===== КОРЗИНА (таблица) ===== */
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 18px;
+}
+
+.cart-table th,
+.cart-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
+}
+
+.cart-table th {
+  text-align: left;
+  color: var(--color-secondary);
+  opacity: 0.9;
+}
+
+.cart-qty {
+  width: 60px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: #1b120e;
+  color: var(--color-secondary);
+}
+
+.cart-remove {
+  border: none;
+  background: transparent;
+  color: #dfa496;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.cart-remove:hover {
+  color: #ffffff;
+}
+
+.cart-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.cart-empty p {
+  margin-bottom: 14px;
+}
